@@ -1,0 +1,178 @@
+.root {
+    primary: rgba(255, 40, 80, 255);
+    secondary-light: rgba(30, 30, 40, 255);
+    secondary-dark: rgba(20, 20, 30, 255);
+}
+
+.button {
+    -fx-alignment: center;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-background-color: secondary-light;
+    -fx-text-fill: primary;
+    -fx-border-color: primary;
+}
+.button:hover {
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-background-color: primary;
+    -fx-text-fill: secondary-light;
+}
+
+.text-field {
+    -fx-border-radius: 30;
+    -fx-background-color: transparent;
+    -fx-text-fill: primary;
+    -fx-border-color: primary;
+    -fx-alignment: center;
+}
+
+.label {
+    -fx-text-fill: primary;
+}
+
+.accordion {
+    -fx-background-color: secondary-dark;
+}
+
+.titled-pane:collapsed > .title {
+    -fx-base: secondary-light;
+}
+.titled-pane:collapsed > .title > .arrow-button > .arrow {
+    -fx-background-color: primary;
+}
+.titled-pane:collapsed {
+    -fx-text-fill: primary;
+}
+
+.titled-pane:expanded > .title {
+    -fx-base: primary;
+}
+.titled-pane:expanded > .title > .arrow-button > .arrow {
+    -fx-background-color: secondary-light;
+}
+.titled-pane:expanded {
+    -fx-text-fill: secondary-light;
+}
+
+.slider > .track {
+    -fx-background-color: derive(secondary-dark, 35%);
+}
+.slider > .thumb {
+    -fx-background-color: primary;
+}
+.slider > .axis {
+    -fx-tick-label-fill: primary;
+}
+.slider > .axis > .axis-tick-mark {
+    -fx-stroke: primary;
+}
+.slider > .axis > .axis-minor-tick-mark {
+    -fx-stroke: primary;
+}
+
+.separator > .line {
+    -fx-background-color: primary;
+    -fx-border-width: 0;
+}
+
+
+.color-picker {
+    -fx-padding: 0 0 0 5;
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-background-color: secondary-light;
+    -fx-border-color: primary;
+}
+.color-picker > .arrow-button > .arrow {
+    -fx-background-color: primary;
+}
+
+.choice-box {
+    -fx-padding: 0 0 0 5;
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-background-color: secondary-light;
+    -fx-border-color: primary;
+}
+.choice-box > .open-button > .arrow {
+    -fx-background-color: primary;
+}
+.choice-box .context-menu {
+    -fx-background-color: secondary-light;
+}
+.choice-box .menu-item:focused {
+    -fx-background-color: primary;
+}
+.choice-box .menu-item > .label {
+    -fx-text-fill: primary;
+}
+.choice-box .menu-item:focused > .label {
+    -fx-text-fill: secondary-light;
+}
+
+.check-box .box {
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-background-color: secondary-light;
+    -fx-border-color: primary;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: secondary-light;
+}
+
+.check-box:selected .box {
+    -fx-background-color: primary;
+}
+
+.check-box > .text {
+    -fx-fill: primary;
+}
+
+.radio-button {
+    -fx-text-fill: primary;
+}
+.radio-button .radio {
+    -fx-background-color: secondary-light;
+}
+.radio-button:selected  .radio .dot{
+    -fx-background-color: primary;
+}
+
+
+#anchor-pane {
+    -fx-background-color: secondary-dark;
+}
+
+.anchor-pane {
+    -fx-background-color: secondary-dark;
+}
+
+.progress-bar > .bar {
+    -fx-background-radius: 0;
+    -fx-background-insets: 0, 10;
+    -fx-background-color: primary;
+}
+.progress-bar > .track {
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-background-color: secondary-dark;
+}
+
+.menu-bar {
+    -fx-background-color: primary;
+}
+.menu .label{
+    -fx-text-fill: secondary-dark;
+}
+.menu:hover {
+    -fx-background-color: secondary-dark;
+}
+.menu:hover .label{
+    -fx-text-fill: primary;
+}
+.context-menu{
+    -fx-background-color: secondary-light;
+}
+

@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="#anchor-pane" fx:id="rootAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.SimulationScreenController">
+   <children>
+      <VBox prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar maxHeight="-Infinity" prefHeight="26.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Home">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleHelp" text="Help / About" />
+                     </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Window">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleMinimize" text="Minimize" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close / Exit" />
+                     </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox id="#anchor-pane" alignment="CENTER_RIGHT" styleClass="anchor-pane">
+               <children>
+                  <Accordion prefWidth="256.0" HBox.hgrow="ALWAYS">
+                    <panes>
+                      <TitledPane fx:id="simulationTP" text="BOIDS SIMULATION">
+                        <content>
+                          <AnchorPane id="anchor-pane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox layoutX="54.0" layoutY="115.0" prefHeight="644.0" prefWidth="254.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label text="NUMBER OF BIRDS:" />
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="numBirdsTF" alignment="CENTER_RIGHT" editable="false" prefWidth="50.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="numBirdsSlider" majorTickUnit="100.0" max="400.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" value="200.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER" spacing="10.0">
+                                             <children>
+                                                <HBox alignment="CENTER" spacing="10.0">
+                                                   <children>
+                                                      <Label text="PLAY / PAUSE" />
+                                                      <Separator HBox.hgrow="ALWAYS" />
+                                                      <Button fx:id="playBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handlePlay" prefHeight="35.0" prefWidth="35.0" text="▶" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" spacing="10.0">
+                                                   <children>
+                                                      <Label text="NEXT STEP" />
+                                                      <Separator HBox.hgrow="ALWAYS" />
+                                                      <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleNextStep" prefHeight="35.0" prefWidth="35.0" text="⏭" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" spacing="10.0">
+                                                   <children>
+                                                      <Label text="LOAD SIMULATION" />
+                                                      <Separator HBox.hgrow="ALWAYS" />
+                                                      <Button fx:id="loadBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleLoad" prefHeight="35.0" prefWidth="35.0" text="📁" />
+                                                   </children>
+                                                </HBox>
+                                                <VBox spacing="15.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER" spacing="10.0">
+                                                         <children>
+                                                            <Label text="SAVE SIMULATION" />
+                                                            <Separator HBox.hgrow="ALWAYS" />
+                                                            <Button fx:id="saveBtn" alignment="CENTER" cacheShape="false" mnemonicParsing="false" onAction="#handleSave" prefHeight="35.0" prefWidth="35.0" text="💾" />
+                                                         </children>
+                                                      </HBox>
+                                                      <VBox alignment="CENTER_LEFT" spacing="15.0">
+                                                         <children>
+                                                            <CheckBox fx:id="saveAppearanceCB" mnemonicParsing="false" selected="true" text="SAVE APPEARANCE" />
+                                                            <CheckBox fx:id="saveBirdSettingsCB" mnemonicParsing="false" selected="true" text="SAVE BIRD SETTINGS" />
+                                                            <CheckBox fx:id="saveMapSettingsCB" mnemonicParsing="false" selected="true" text="SAVE MAP SETTINGS" />
+                                                         </children>
+                                                         <padding>
+                                                            <Insets left="20.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox VBox.vgrow="ALWAYS" />
+                                       </children>
+                                       <padding>
+                                          <Insets top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                        <TitledPane expanded="false" text="APPEARANCE">
+                           <content>
+                              <AnchorPane id="anchor-pane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox layoutX="92.0" layoutY="-79.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Label text="Theme:">
+                                                   <tooltip>
+                                                      <Tooltip fx:id="themeTT" text="Sets the color theme of the UI" />
+                                                   </tooltip>
+                                                </Label>
+                                                <HBox HBox.hgrow="ALWAYS" />
+                                                <ChoiceBox fx:id="themeCB" prefWidth="132.0" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Label text="Wall color:">
+                                                   <tooltip>
+                                                      <Tooltip fx:id="wallColorTT" text="Sets the color of the walls" />
+                                                   </tooltip>
+                                                </Label>
+                                                <HBox HBox.hgrow="ALWAYS" />
+                                                <ColorPicker fx:id="wallColorCP">
+                                                   <value>
+                                                      <Color red="0.0784313753247261" green="0.0784313753247261" blue="0.11764705926179886" />
+                                                   </value>
+                                                </ColorPicker>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Label text="Background color:">
+                                                   <tooltip>
+                                                      <Tooltip fx:id="backgroundColorTT" text="Sets the color of the background" />
+                                                   </tooltip>
+                                                </Label>
+                                                <HBox HBox.hgrow="ALWAYS" />
+                                                <ColorPicker fx:id="backgroundColorCP">
+                                                   <value>
+                                                      <Color red="0.11764705926179886" green="0.11764705926179886" blue="0.1568627506494522" />
+                                                   </value>
+                                                </ColorPicker>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Label text="Bird color:">
+                                                   <tooltip>
+                                                      <Tooltip fx:id="birdColorTT" text="Sets the color of the birds" />
+                                                   </tooltip>
+                                                </Label>
+                                                <HBox HBox.hgrow="ALWAYS" />
+                                                <ColorPicker fx:id="birdColorCP">
+                                                   <value>
+                                                      <Color red="1.0" green="0.1568627506494522" blue="0.3137255012989044" />
+                                                   </value>
+                                                </ColorPicker>
+                                             </children>
+                                          </HBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label text="Bird size:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="birdSizeTT" text="Sets the size of each bird sprite." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="birdSizeTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="birdSizeSlider" blockIncrement="1.0" majorTickUnit="5.0" max="20.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label text="Bird angle:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="birdAngleTT" text="Sets the angle of each bird sprite." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="birdAngleTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="birdAngleSlider" majorTickUnit="30.0" max="120.0" minorTickCount="2" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="40.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                      <TitledPane expanded="false" text="BIRD SETTINGS">
+                        <content>
+                          <AnchorPane id="anchor-pane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox layoutX="6.599999904632568" layoutY="8.600000381469727" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label fx:id="alignmentLbl" text="Alignment Factor:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="alignmentTT" text="Sets the alignment factor of each bird. Factor is in percentage." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="alignmentTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="alignmentSlider" minorTickCount="4" showTickLabels="true" showTickMarks="true" value="65.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label fx:id="coherenceLbl" text="Coherence Factor:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="coherenceTT" text="Sets coherence factor of each bird. Factor is in percentage." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="coherenceTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="coherenceSlider" minorTickCount="4" showTickLabels="true" showTickMarks="true" value="75.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label fx:id="separationLbl" text="Separation Factor:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="separationTT" text="Sets separation factor of each bird. Factor is in percentage." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="separationTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="separationSlider" minorTickCount="4" showTickLabels="true" showTickMarks="true" value="80.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label fx:id="visionRadiusLbl" text="Vision Radius:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="visionRadiusTT" text="Sets the vision radius of each bird. Radius is in pixels." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="visionRadiusTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="visionRadiusSlider" minorTickCount="4" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="25.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label fx:id="visionAngleLbl" text="Vision Angle:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="visionAngleTT" text="Sets the vision angle of each bird. Angle is in degrees." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="visionAngleTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="visionAngleSlider" majorTickUnit="90.0" max="360.0" minorTickCount="2" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="360.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label fx:id="maxSpeedLbl" text="Max Speed:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="maxSpeedTT" text="Sets max speed of each bird. Speed is in pixels." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="maxSpeedTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="maxSpeedSlider" blockIncrement="1.0" majorTickUnit="2.0" max="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="3.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label fx:id="maxAccelerationLbl" text="Max Acceleration:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="maxAccelerationTT" text="Sets max acceleration of each bird. Acceleration is in percentage of current speed." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="maxAccelerationTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="maxAccelerationSlider" minorTickCount="4" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="15.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label fx:id="boundaryMarginLbl" text="Boundary Margin:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="boundaryMarginTT" text="Sets how much each bird tends to avoid walls. Margin is in pixels." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="boundaryMarginTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="boundaryMarginSlider" minorTickCount="4" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="35.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                      <TitledPane expanded="false" text="MAP SETTINGS">
+                        <content>
+                          <AnchorPane id="anchor-pane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox layoutX="92.0" layoutY="-79.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <HBox alignment="CENTER" spacing="10.0">
+                                             <children>
+                                                <Label fx:id="seedLbl" text="Map Seed:">
+                                                   <tooltip>
+                                                      <Tooltip fx:id="seedTT" text="Sets the seed for the random generation of walls. Leave blank for a randomised seed, enter a number for a set seed. Press ENTER to use the current seed." />
+                                                   </tooltip>
+                                                </Label>
+                                                <TextField fx:id="seedTF" alignment="CENTER_RIGHT" onAction="#handleSeed" prefWidth="0.0" promptText="Enter seed number" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label fx:id="gridSquareSizeLbl" text="Grid Square Size:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="gridSquareSizeTT" text="Sets the size of each square in the map. Size cannot be smaller than 2. Size is in pixels." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="gridSquareSizeTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="gridSquareSizeSlider" blockIncrement="1.0" majorTickUnit="8.0" max="32.0" minorTickCount="7" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="4.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label fx:id="spawnChanceLbl" text="Wall Spawn Chance:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="spawnChanceTT" text="Sets the spawn chance of a wall in each square (recommended to be 60%). Chance is in percentage." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="spawnChanceTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="spawnChanceSlider" minorTickCount="4" showTickLabels="true" showTickMarks="true" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER">
+                                                   <children>
+                                                      <Label fx:id="thresholdLbl" text="Neighbor Threshold:">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="thresholdTT" text="Sets the number of neighboring walls required in a 3x3 area surrounding each square to be a wall." />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <HBox HBox.hgrow="ALWAYS" />
+                                                      <TextField fx:id="thresholdTF" alignment="CENTER_RIGHT" editable="false" prefWidth="40.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Slider fx:id="thresholdSlider" blockIncrement="1.0" majorTickUnit="1.0" max="8.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="4.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                                   <children>
+                                                      <Label fx:id="iterationsPassedLbl" text="Smoothened: 0">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="iterationsTT" text="Counts how many times the map has been smoothened." />
+                                                         </tooltip>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" onAction="#handleDecrementSmoothen" prefWidth="27.0" text="-" />
+                                                      <TextField fx:id="iterationsTF" alignment="CENTER" prefWidth="40.0" text="3" />
+                                                      <Button mnemonicParsing="false" onAction="#handleIncrementSmoothen" prefHeight="27.0" prefWidth="27.0" text="+" />
+                                                      <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                                         <children>
+                                                            <Separator HBox.hgrow="ALWAYS" />
+                                                         </children>
+                                                      </HBox>
+                                                      <Button fx:id="nextIterationBtn" mnemonicParsing="false" onAction="#handleNextIteration" text="Smoothen" />
+                                                      <Button fx:id="reloadBtn" mnemonicParsing="false" onAction="#handleReload" prefHeight="32.0" prefWidth="32.0" text="🔄" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox spacing="10.0">
+                                             <children>
+                                                <Label text="Map Editor Tools:" wrapText="true" />
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                   <children>
+                                                      <CheckBox fx:id="floodFillCB" mnemonicParsing="false" text="🎨">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </CheckBox>
+                                                      <Label text="Flood Fill" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                   <children>
+                                                      <RadioButton fx:id="drawWallsRB" mnemonicParsing="false" selected="true" text="🖌">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </RadioButton>
+                                                      <Label text="Draw Walls" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                   <children>
+                                                      <RadioButton fx:id="eraseWallsRB" mnemonicParsing="false" text="🚫">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </RadioButton>
+                                                      <Label text="Erase Walls" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+                  <VBox id="#anchor-pane" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Canvas fx:id="mapAreaCanvas" height="694.0" onMouseClicked="#handleMouseDrag" onMouseDragged="#handleMouseDrag" width="1024.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@Base.css" />
+      <URL value="@Crimson-Red.css" />
+   </stylesheets>
+</AnchorPane>
