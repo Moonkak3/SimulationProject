@@ -1,0 +1,5 @@
+.root{
+    primary: rgba(255, 40, 80, 255);
+    secondary-light: rgba(40, 40, 50, 255);
+    secondary-dark: rgba(20, 20, 30, 255);
+}
